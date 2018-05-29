@@ -27,9 +27,29 @@ module.exports = {
 				exclude: /node_modules/,
 
 				// Use the babel-loader
-				use: {
-					loader: "babel-loader"
-				}
+				use: [
+					{
+						loader: "babel-loader"
+					},
+				]
+			},
+			{
+				test: /\.svg$/,
+				use: [
+					{
+						loader: "babel-loader"
+					},
+					{
+						loader: "react-svg-loader",
+						options: {
+							jsx: true // true outputs JSX tags
+						}
+					}
+				]
+			},
+			{
+				test: /\.css$/,
+				use: [ 'style-loader', 'css-loader' ]
 			}
 		]
 	},
