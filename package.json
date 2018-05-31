@@ -1,7 +1,7 @@
 {
   "name": "webpack-react",
   "version": "1.0.0",
-  "description": "Boilerplate for React Apps",
+  "description": "React Movie Database",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
@@ -10,6 +10,8 @@
   "author": "Richard Memory",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",

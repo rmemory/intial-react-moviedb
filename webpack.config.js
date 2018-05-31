@@ -5,7 +5,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	// Primary entry point for react application
-	entry: './src/index.js',
+	entry: ['babel-polyfill', './src/index.js'],
 
 	// Output of build from webpack
 	output: {
@@ -21,7 +21,7 @@ module.exports = {
 		rules: [
 			{
 				// Do build the .jsx files
-				test: /\.js|.jsx?$/,
+				test: /\.jsx?$/,
 
 				// Don't build the node_modules directory
 				exclude: /node_modules/,
@@ -29,7 +29,10 @@ module.exports = {
 				// Use the babel-loader
 				use: [
 					{
-						loader: "babel-loader"
+						loader: "babel-loader",
+						options: {
+							presets: ['react']
+						}
 					},
 				]
 			},
