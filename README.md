@@ -19,6 +19,62 @@ create webpack.config.js. This is where we define the inputs and outputs webpack
 
 create .babelrc
 
+====== eslint
+
+1) Install ESLint Extension for VSCode
+2) Install ESLint into project
+
+npm install --save-dev eslint eslint-config-airbnb eslint-plugin-react babel-eslint@8.0.0
+
+3) create .eslintrc.js
+
+run ./node_modules/eslint/bin/eslint.js --init
+
+4) In VSCode File->Preferences->Settings
+
+"eslint.autoFixOnSave": true,
+
+5) Here are the contents of .eslintrc.js
+
+module.exports = {
+    "parser": "babel-eslint",
+  "env": {
+      "browser": true,
+      "es6": true
+  },
+  "settings": {
+        "ecmascript": 6,
+        "jsx": true
+  },
+  "parserOptions": {
+      "ecmaVersion": 2017,
+      "ecmaFeatures": {
+          "experimentalObjectRestSpread": true,
+          "experimentalDecorators": true,
+          "jsx": true
+      },
+      "sourceType": "module"
+  },
+  "plugins": [
+      "react",
+  ],
+  "extends": "airbnb",
+  "rules":{
+    "indent": ["error", "tab"],
+    "no-tabs": 0,
+    "react/jsx-filename-extension": 0,
+    "function-paren-newline": 0,
+    "react/jsx-indent": 0,
+    "import/extensions": 0,
+  },
+};
+
+6) Can use these to disable particular errors per file or per line
+
+/* eslint-disable react/no-did-mount-set-state */
+
+// eslint-disable-line no-unused-vars
+
 
 ==== Questions
 
