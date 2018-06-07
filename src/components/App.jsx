@@ -15,7 +15,7 @@ const App = () => (
 	<Router>
 		<div className="App">
 			<header className="App-header">
-				<Link to="/">
+				<Link to="/"> {/* eslint-disable-line */}
 					<Logo width={150} alt="logo" />
 				</Link>
 			</header>

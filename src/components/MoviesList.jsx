@@ -73,4 +73,11 @@ const MovieGrid = styled.div`
 	padding: 1rem;
 	grid-template-columns: repeat(6, 1fr);
 	grid-row-gap: 1rem;
+	${'' /* display: flex;
+	flex-wrap: wrap;
+	align-items: space-between;
+	justify-content: space-between;
+
+	padding: 50px 50px 50px 50px;
+	min-height: 75vh; */}
 `;

@@ -5,6 +5,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	// Primary entry point for react application
+	// babel-polyfill allows usage of promises, async/await.
 	entry: ['babel-polyfill', './src/index.js'],
 
 	// Output of build from webpack
@@ -14,6 +15,12 @@ module.exports = {
 
 		// output will be in a file name index_bundle.js
 		filename: 'index_bundle.js',
+
+		/*
+		   First half of allowing webpack dev server to handle react
+		   routes. See this:
+		   https://tylermcginnis.com/react-router-cannot-get-url-refresh/
+		 */
 		publicPath: '/',
 	},
 
@@ -58,6 +65,7 @@ module.exports = {
 		],
 	},
 
+	// Second half of allowing webpack dev server to handle react routes.
 	devServer: {
 		historyApiFallback: true,
 	},
