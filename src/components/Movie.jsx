@@ -1,14 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Overdrive from 'react-overdrive';
 import styled from 'styled-components';
 
 const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
 
 const Movie = ({ movie /* overview */ }) => (
 	<div>
-		<Link to={`${movie.id}`}>
-			<Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+		<Link to={`${movie.id}`}> {/* eslint-disable-line */}
+			<Overdrive id={movie.id}>
+				<Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+			</Overdrive>
 		</Link>
 		{/* <h3>{movie.title}</h3> */}
 	</div>

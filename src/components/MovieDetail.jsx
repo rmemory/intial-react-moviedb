@@ -1,5 +1,6 @@
 /* eslint-disable react/no-did-mount-set-state */
 import React, { Component } from 'react';
+import Overdrive from 'react-overdrive';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -60,7 +61,9 @@ class MovieDetail extends Component {
 							return (
 								<MovieWrapper backdrop={`${BACKDROP_PATH}${movie.backdrop_path}`}>
 									<MovieInfo>
-										<Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+										<Overdrive id={movie.id}>
+											<Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+										</Overdrive>
 										<div>
 											<h1 key={movie.id}>{`${movie.title}`}</h1>
 											<h3>Release Date: {movie.release_date}</h3>
