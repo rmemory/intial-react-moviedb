@@ -1,10 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-const Movie = ({ movie, overview }) => (
+const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
+
+const Movie = ({ movie /* overview */ }) => (
 	<div>
-		<h3>{movie.title}</h3>
-		<p>{overview}</p>
+		<Link to={`${movie.id}`}>
+			<Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+		</Link>
+		{/* <h3>{movie.title}</h3> */}
 	</div>
 );
 
@@ -13,11 +19,15 @@ Movie.propTypes = {
 		id: PropTypes.number,
 		title: PropTypes.string.isRequired,
 	}).isRequired,
-	overview: PropTypes.string,
+	// overview: PropTypes.string,
 };
 
-Movie.defaultProps = {
-	overview: 'Overview not available',
-};
+// Movie.defaultProps = {
+// 	overview: 'Overview not available',
+// };
 
 export default Movie;
+
+export const Poster = styled.img`
+	box-shadow: 0 0 35px black;
+`;

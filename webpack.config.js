@@ -13,10 +13,11 @@ module.exports = {
 		path: path.join(__dirname, '/dist'),
 
 		// output will be in a file name index_bundle.js
-		filename: 'index_bundle.js'
+		filename: 'index_bundle.js',
+		publicPath: '/',
 	},
 
-	// Rules for loader. 
+	// Rules for loader
 	module: {
 		rules: [
 			{
@@ -29,40 +30,45 @@ module.exports = {
 				// Use the babel-loader
 				use: [
 					{
-						loader: "babel-loader",
+						loader: 'babel-loader',
 						options: {
-							presets: ['react']
-						}
+							presets: ['react'],
+						},
 					},
-				]
+				],
 			},
 			{
 				test: /\.svg$/,
 				use: [
 					{
-						loader: "babel-loader"
+						loader: 'babel-loader',
 					},
 					{
-						loader: "react-svg-loader",
+						loader: 'react-svg-loader',
 						options: {
-							jsx: true // true outputs JSX tags
-						}
-					}
-				]
+							jsx: true, // true outputs JSX tags
+						},
+					},
+				],
 			},
 			{
 				test: /\.css$/,
-				use: [ 'style-loader', 'css-loader' ]
-			}
-		]
+				use: ['style-loader', 'css-loader'],
+			},
+		],
 	},
-	// This creates the index.html, using the ./src/index.html as a 
+
+	devServer: {
+		historyApiFallback: true,
+	},
+
+	// This creates the index.html, using the ./src/index.html as a
 	// starting template
 	plugins: [
 		new HtmlWebPackPlugin({
-			// With no arg, it would attempt to create its own HTML file, 
+			// With no arg, it would attempt to create its own HTML file,
 			// but we specify a template instead
-			template: './src/index.html'
-		})
-	]
-}
+			template: './src/index.html',
+		}),
+	],
+};
