@@ -1,6 +1,8 @@
 /* eslint-disable react/no-did-mount-set-state */
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Overdrive from 'react-overdrive';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -55,15 +57,25 @@ class MovieDetail extends Component {
 
 		return (
 			<div>
+				{/* Conditional alternatives */}
+				{/* { (A)
+					movie ? (<h1>Hello</h1>) : (<h1>Else</h1>)
+				} */}
+				{/* { (B)
+					movie &&
+						<h1>Hello</h1>
+				} */}
 				{
 					(() => {
 						if (movie) {
 							return (
 								<MovieWrapper backdrop={`${BACKDROP_PATH}${movie.backdrop_path}`}>
 									<MovieInfo>
-										<Overdrive id={movie.id}>
-											<Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
-										</Overdrive>
+										<Link to="/"> {/* eslint-disable-line */}
+											<Overdrive id={movie.id}>
+												<Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+											</Overdrive>
+										</Link>
 										<div>
 											<h1 key={movie.id}>{`${movie.title}`}</h1>
 											<h3>Release Date: {movie.release_date}</h3>
@@ -80,6 +92,10 @@ class MovieDetail extends Component {
 		);
 	}
 }
+
+MovieDetail.propTypes = {
+	match: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+};
 
 export default MovieDetail;
 

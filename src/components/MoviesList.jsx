@@ -1,11 +1,16 @@
 /* eslint-disable react/no-did-mount-set-state */
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
 import Movie from './Movie.jsx';
 
-class MoviesList extends Component {
+/* Usage of PureComponent instead of Component means this particular
+   component will only update when a "first level" state or prop
+   change occurs, in this case the Movies state. Its a performance
+   boost, as Component hirearchies otherwise perform a "deep" update
+   strategy, and also can use shouldComponentUpdate as well. */
+class MoviesList extends PureComponent {
 	state = {
 		movies: [],
 		err: false,
@@ -54,9 +59,10 @@ class MoviesList extends Component {
 				{
 					(() => {
 						if (movies.length > 0) {
-							return movies.map(movie => (
+							const myArray = movies.map(movie => (
 								<Movie key={movie.id} movie={movie} />
 							));
+							return myArray;
 						}
 						return <p>{message}</p>;
 					})()
